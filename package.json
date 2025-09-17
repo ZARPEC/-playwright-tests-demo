@@ -1,0 +1,26 @@
+{
+  "name": "-playwright-tests-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test", 
+    "test:report": "playwright test --reporter=html && playwright show-report" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZARPEC/-playwright-tests-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ZARPEC/-playwright-tests-demo/issues"
+  },
+  "homepage": "https://github.com/ZARPEC/-playwright-tests-demo#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+  
+}
