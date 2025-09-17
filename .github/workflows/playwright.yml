@@ -1,35 +1,36 @@
 name: Run Playwright Tests
+
 on:
-push:
-pull_request:
-workflow_dispatch:
+  push:
+  pull_request:
+  workflow_dispatch:
 jobs:
-test:
-runs-on: ubuntu-latest
-steps:
-  - name: Checkout código
-    uses: actions/checkout@v4
+  test:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
 
-  - name: Instalar Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: 18
+    - name: Instalar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
 
-  - name: Instalar dependencias
-    run: npm ci
+    - name: Instalar dependencias
+      run: npm ci
 
-  # Instala navegadores y dependencias del sistema operativo
-  - name: Instalar Playwright y deps del sistema
-    run: npx playwright@latest install --with-deps
+    # Instala navegadores y dependencias del sistema operativo
+    - name: Instalar Playwright y deps del sistema
+      run: npx playwright@latest install --with-deps
 
-  - name: Ejecutar pruebas Playwright
-    run: npx playwright test --reporter=list
+    - name: Ejecutar pruebas Playwright
+      run: npx playwright test --reporter=list
 
-  # Sube el reporte HTML, screenshots y videos como artefactos
-  - name: Subir artefactos (reporte, screenshots, videos, traces)
-    if: always()
-    uses: actions/upload-artifact@v4
-    with:
-      name: playwright-artifacts
-      path: playwright-report/
-      if-no-files-found: warn
+    # Sube el reporte HTML, screenshots y videos como artefactos
+    - name: Subir artefactos (reporte, screenshots, videos, traces)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-artifacts
+        path: playwright-report/
+        if-no-files-found: warn
